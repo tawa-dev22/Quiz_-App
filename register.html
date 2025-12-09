@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body{
+            background-image: url('./assets/images/tsc_high_res-QCAWIHJC.png');
+            color: rgb(14, 7, 7);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #register-form{
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #register-form input{
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        #register-form button{
+            background-color:  rgb(219, 22, 22);
+            font-size: 30px;;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h4{
+            margin-top: 15px;
+            font-size: 18px;
+            color: rgb(228, 8, 8);
+        }
+        h1{
+            color: rgb(185, 7, 7);
+            padding-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+   <div id="register-form" style="display: flex; flex-direction: column; align-items: center;"> 
+                <h1>Create your Account</h1>
+                <form id="Register">
+                    <input type="text" id="signup-name" placeholder="Full-Name" required>
+                    <input type="text" id="signup-username" placeholder="Username/Email" required>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                    <a href="form.html">
+                   <button id="submit">Sign Up</button></a>
+                    <h4>Already have an account?<a href="form.html" style="color:gold;"> Login</a></h4>
+                </form>
+            </div>
+    
+</body>
+</html>
+
