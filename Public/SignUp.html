@@ -5,12 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 <link rel="stylesheet" href="style.css">
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: #166d33;
+        height: 100%;
+    }
+    #register-form {
+        width: 400px;
+        height: auto;
+        margin: 40px auto;
+        padding: 30px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 80px;
+    }
+    #register-form h1 {
+        margin-bottom: 20px;
+    }
+    #Register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #Register input {
+        padding: 10px;
+        margin: 10px 0;
+        width: 80%;
+        border: 2px solid #000000;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    #submit {
+        padding: 10px 20px;
+        background-color: #0c3d1c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #submit:hover {
+        background-color: #125227;
+    }
+</style>
 </head>
 <body>
    <div id="register-form"> 
                 <h1>Create your Account</h1>
                 <form id="Register">
                     <input type="text" id="signup-name" placeholder="Full-Name" required>
+                    <input type="text" id="signup-phone" placeholder="Phone Number" required>
+                    <input type="date" id="signup-age" placeholder="DOB" required>
                     <input type="text" id="signup-username" placeholder="Username/Email" required>
                     <input type="password" id="signup-password" placeholder="Password" required>
                     <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>

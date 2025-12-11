@@ -5,12 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz App</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0c550f;
+      height: 100%;
+    }
+    .app {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      height: 500px;
+      width: 500px;
+    }
+    #image-frame {
+      margin-bottom: 20px;
+    }
+    .quiz {
+      margin-top: 20px;
+    }
+    .quiz form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .quiz input[type="text"] {
+      padding: 8px;
+      margin: 10px 0;
+      width: 60%;
+      border: 2px solid #000000;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .quiz button {
+      padding: 10px 20px;
+      background-color: #0c3d1c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background-color: #125227;
+    }
+  </style>
 </head>
 <body>
 
 <div class="app">
   <div id="image-frame">
-    <img src="/images/tsc_high_res-QCAWIHJC.png" width="40%" height="200px" alt="Zimbabwe Highway Code logo">
+    <img src="./images/tsc_high_res-QCAWIHJC.png" width="40%" height="200px" alt="Zimbabwe Highway Code logo">
   </div>
 
   <h1>Welcome to the Quiz App</h1>
