@@ -56,7 +56,7 @@ body {
 
 .btn:hover:not([disabled]) {
     background-color: #222;
-    color: #fff;
+    color: white;
 }
 
 .btn:disabled {
@@ -92,4 +92,129 @@ body {
 
 .result-item {
     margin: 10px 0;
+}
+
+/* Auth pages: sign-in & sign-up */
+.app-quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-frame {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-frame img {
+    margin-bottom: 15px;
+}
+
+.container {
+    text-align: center;
+}
+
+.Login .form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Login input[type="email"],
+.Login input[type="password"] {
+    width: 100%;
+    max-width: 320px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+#Login {
+    width: 100%;
+    max-width: 320px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    background-color: #0c3d1c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#Login:hover {
+    background-color: #125227;
+    transform: translateY(-1px);
+}
+
+.signup {
+    margin-top: 16px;
+    text-align: center;
+    color: #f9fafb;
+}
+
+.signup a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* Sign-up form */
+#register-form {
+    max-width: 500px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#register-form h1 {
+    margin-bottom: 20px;
+    color: #222;
+}
+
+#Register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Register input[type="text"],
+#Register input[type="password"] {
+    width: 100%;
+    max-width: 360px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+#submit {
+    width: 100%;
+    max-width: 360px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    background-color: #0c3d1c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#submit:hover {
+    background-color: #125227;
+    transform: translateY(-1px);
 }

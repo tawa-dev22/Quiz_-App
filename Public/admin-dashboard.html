@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .admin-wrapper {
+      max-width: 900px;
+      margin: 60px auto;
+    }
+    .admin-section {
+      margin-bottom: 30px;
+    }
+    .admin-section h2 {
+      margin-bottom: 10px;
+    }
+    .admin-form-row {
+      margin: 6px 0;
+    }
+    .admin-form-row input,
+    .admin-form-row select {
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid #d1d5db;
+      width: 100%;
+      max-width: 320px;
+    }
+    #adminForm button[type="submit"] {
+      margin-top: 10px;
+      padding: 10px 16px;
+      background-color: #0c3d1c;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    #adminForm button[type="submit"]:hover {
+      background-color: #125227;
+    }
+  </style>
+</head>
+<body>
+  <div class="app admin-wrapper">
+    <h1>Admin Dashboard</h1>
+
+    <div class="admin-section">
+      <h2>Add User / Admin & Question</h2>
+      <form id="adminForm">
+        <div class="admin-form-row">
+          <input type="text" name="username" placeholder="New username (optional)">
+        </div>
+        <div class="admin-form-row">
+          <input type="password" name="password" placeholder="New user password (optional)">
+        </div>
+        <div class="admin-form-row">
+          <select name="role">
+            <option value="">Select role (optional)</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <hr>
+
+        <div class="admin-form-row">
+          <input type="text" name="question" placeholder="Question text (optional)">
+        </div>
+        <div class="admin-form-row">
+          <input type="text" name="imageUrl" placeholder="Image URL (optional)">
+        </div>
+
+        <hr>
+
+        <div class="admin-form-row">
+          <input type="text" name="adminUsername" placeholder="Your admin username" required>
+        </div>
+        <div class="admin-form-row">
+          <input type="password" name="adminPassword" placeholder="Your admin password" required>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="admin-section">
+      <h2>Quiz Results</h2>
+      <div id="resultsContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    async function loadResults() {
+      const res = await fetch("/results");
+      const results = await res.json();
+      const container = document.getElementById("resultsContainer");
+      container.innerHTML = "";
+      results.forEach(r => {
+        const div = document.createElement("div");
+        div.innerHTML =
+          `<b>${r.username}</b> (${new Date(r.submittedAt).toLocaleString()})<br>` +
+          r.answers.map(a => `<p>${a.question}: ${a.answer}</p>`).join("");
+        container.appendChild(div);
+        container.appendChild(document.createElement("hr"));
+      });
+    }
+
+    document.getElementById("adminForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch("/admin-dashboard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      const text = await res.text();
+      alert(text);
+      e.target.reset();
+      loadResults();
+    });
+
+    loadResults();
+  </script>
+</body>
+</html>
