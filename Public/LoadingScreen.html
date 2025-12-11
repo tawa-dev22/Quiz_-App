@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Screen</title>
+  <style>
+    /* Full screen layout */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f3f4f6; /* gray-100 */
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Watermark logo */
+    .watermark {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      opacity: 0.1;
+      object-fit: contain;
+    }
+
+    /* Loading container */
+    .loading-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loading-text {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #374151; /* gray-700 */
+      letter-spacing: 0.05em;
+    }
+
+    /* Loading bar background */
+    .loading-bar-bg {
+      width: 16rem; /* 64 * 0.25rem = 16rem */
+      height: 0.75rem; /* 3 * 0.25rem = 0.75rem */
+      background-color: #d1d5db; /* gray-300 */
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 1rem;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Loading bar fill animation */
+    .loading-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #2563eb; /* blue-600 */
+      border-radius: 9999px;
+      animation: loading 6s linear forwards;
+    }
+
+    @keyframes loading {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Watermark Logo -->
+  <img src="./assets/logo.jpeg" alt="Logo" class="watermark">
+
+  <!-- Loading Content -->
+  <div class="loading-container">
+    <p class="loading-text">Loading...</p>
+    <div class="loading-bar-bg">
+      <div class="loading-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- Optional redirect after 6 seconds -->
+  <script>
+    setTimeout(() => {
+      window.location.href = "/signin.html"; // redirect page
+    }, 6000);
+  </script>
+
+</body>
+</html>

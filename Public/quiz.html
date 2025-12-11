@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <div id="image-frame">
+    <img src="./assets/images/tsc_high_res-QCAWIHJC.png" width="40%" height="200px" alt="">
+  </div>
+
+  <h1>Welcome to the Quiz App</h1>
+
+  <div class="quiz">
+    <form id="quizForm">
+      <div id="quizContainer"></div>
+      <input type="text" name="username" placeholder="Your Username" required><br><br>
+      <button type="submit">Submit Quiz</button>
+    </form>
+  </div>
+</div>
+
+<script>
+let questions = [];
+let currentQuestion = 0;
+
+// Load questions from backend
+async function loadQuestions() {
+  const res = await fetch("/questions");
+  questions = await res.json();
+  displayQuestion();
+}
+
+// Display a question
+function displayQuestion() {
+  const container = document.getElementById("quizContainer");
+  container.innerHTML = "";
+
+  if(currentQuestion >= questions.length){
+    container.innerHTML = "<p>All questions loaded. Fill your answers and submit!</p>";
+    return;
+  }
+
+  const q = questions[currentQuestion];
+  const div = document.createElement("div");
+  div.innerHTML = `<p>${q.question}</p>` +
+                  (q.imageUrl ? `<img src="${q.imageUrl}" width="200px" alt="Question Image"><br>` : '') +
+                  `<input type="text" name="answer_${currentQuestion}" placeholder="Your answer" required><br><br>` +
+                  `<button type="button" id="next-btn">Next</button>`;
+  container.appendChild(div);
+
+  document.getElementById("next-btn").addEventListener("click", () => {
+    currentQuestion++;
+    displayQuestion();
+  });
+}
+
+// Handle form submission
+document.getElementById("quizForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = Object.fromEntries(new FormData(e.target));
+  const username = formData.username;
+
+  const answers = Object.keys(formData)
+    .filter(k => k.startsWith("answer_"))
+    .map((k, i) => ({ question: questions[i].question, answer: formData[k] }));
+
+  const res = await fetch("/submit-quiz", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, answers })
+  });
+
+  alert(await res.text());
+  e.target.reset();
+  currentQuestion = 0;
+  displayQuestion();
+});
+
+// Initialize
+loadQuestions();
+</script>
+</body>
+</html>
